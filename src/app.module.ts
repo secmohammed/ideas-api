@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { IdeasModule } from './ideas/ideas.module';
+import { IdeaModule } from './ideas/idea.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(), IdeasModule],
+  imports: [TypeOrmModule.forRoot(), IdeaModule],
   controllers: [],
   providers: [],
 })
