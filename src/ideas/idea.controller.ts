@@ -20,9 +20,11 @@ export class IdeaController {
     return this.ideas.get();
   }
   @Post()
-  store(@Body() { title, description }: CreateIdea): Promise<
-    IdeaDTO | undefined
-  > {
+  store(@Body()
+  {
+    title,
+    description,
+  }: CreateIdea): Promise<IdeaDTO | undefined> {
     return this.ideas.create({ title, description });
   }
   @Get(':id')
