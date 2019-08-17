@@ -1,34 +1,46 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { IdeaEntity as Idea } from './idea.entity';
-import { IdeaDTO, Idea as IdeaInterface } from './idea.dto';
+import { IdeaDTO } from './idea.dto';
 @Injectable()
 export class IdeaService {
   constructor(
     @InjectRepository(Idea)
     private readonly ideaRepository: Repository<Idea>,
   ) {}
-  async create(payload: IdeaInterface): Promise<IdeaDTO> {
+  async create(payload: Partial<IdeaDTO>): Promise<IdeaDTO> {
     const idea = await this.ideaRepository.create(payload);
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+
     await this.ideaRepository.save(idea);
     return idea;
   }
   async update(
     id: string,
-    payload: IdeaInterface,
+    payload: Partial<IdeaDTO>,
   ): Promise<IdeaDTO | undefined> {
-    await this.ideaRepository.update({ id }, payload);
+    const idea = await this.ideaRepository.update({ id }, payload);
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+
     return this.ideaRepository.findOne({ where: { id } });
   }
-  async find(id: string): Promise<IdeaDTO | undefined> {
+  find(id: string): Promise<IdeaDTO | undefined> {
     return this.ideaRepository.findOne({ where: { id } });
   }
   async destroy(id: string) {
-    await this.ideaRepository.delete({ id });
+    const idea = await this.ideaRepository.delete({ id });
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+
     return { deleted: true };
   }
-  async get(): Promise<IdeaDTO[]> {
+  get(): Promise<IdeaDTO[]> {
     return this.ideaRepository.find();
   }
 }

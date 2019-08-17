@@ -7,6 +7,8 @@ import {
   Put,
   Param,
   Body,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateIdea } from './create-idea.validation';
 import { IdeaDTO } from './idea.dto';
@@ -14,28 +16,32 @@ import { IdeaDTO } from './idea.dto';
 export class IdeaController {
   constructor(private readonly ideas: IdeaService) {}
   @Get()
-  index() {
+  index(): Promise<IdeaDTO[]> {
     return this.ideas.get();
   }
   @Post()
-  async store(@Body() { title, description }: CreateIdea): Promise<
+  store(@Body() { title, description }: CreateIdea): Promise<
     IdeaDTO | undefined
   > {
     return this.ideas.create({ title, description });
   }
   @Get(':id')
-  async show(@Param('id') id: string): Promise<IdeaDTO | undefined> {
-    return this.ideas.find(id);
+  async show(@Param('id') id: string): Promise<IdeaDTO> {
+    const idea = await this.ideas.find(id);
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+    return idea;
   }
   @Put(':id')
-  async update(
+  update(
     @Param('id') id: string,
     @Body() { title, description }: CreateIdea,
   ): Promise<IdeaDTO | undefined> {
     return this.ideas.update(id, { title, description });
   }
   @Delete(':id')
-  async destroy(@Param('id') id: string) {
+  destroy(@Param('id') id: string) {
     return this.ideas.destroy(id);
   }
 }
