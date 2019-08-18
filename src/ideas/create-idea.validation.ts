@@ -1,11 +1,11 @@
-import { Min, Max, IsNotEmpty } from 'class-validator';
+import { MinLength, MaxLength, IsNotEmpty } from 'class-validator';
 export class CreateIdea {
-  @Min(3)
-  @Max(32)
+  @MinLength(3)
+  @MaxLength(32)
   @IsNotEmpty()
   title: string;
-  @Min(10)
-  @Max(255)
+  @MinLength(10)
+  @MaxLength(255)
   @IsNotEmpty()
   description: string;
 }

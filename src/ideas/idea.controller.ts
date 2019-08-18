@@ -9,10 +9,14 @@ import {
   Body,
   HttpException,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '../shared/auth.guard';
+import { User } from '../users/user.decorator';
 import { CreateIdea } from './create-idea.validation';
+import { UUID } from '../users/uuid-validation';
 import { IdeaDTO } from './idea.dto';
-@Controller('ideas')
+@Controller('api/ideas')
 export class IdeaController {
   constructor(private readonly ideas: IdeaService) {}
   @Get()
@@ -20,12 +24,13 @@ export class IdeaController {
     return this.ideas.get();
   }
   @Post()
-  store(@Body()
-  {
-    title,
-    description,
-  }: CreateIdea): Promise<IdeaDTO | undefined> {
-    return this.ideas.create({ title, description });
+  @UseGuards(new AuthGuard())
+  store(
+    @User() { id }: UUID,
+    @Body()
+    { title, description }: CreateIdea,
+  ): Promise<IdeaDTO | undefined> {
+    return this.ideas.create({ title, description }, { id });
   }
   @Get(':id')
   async show(@Param('id') id: string): Promise<IdeaDTO> {
