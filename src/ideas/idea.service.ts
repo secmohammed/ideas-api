@@ -22,43 +22,51 @@ export class IdeaService {
       throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
     }
     let idea = await this.ideas.create({ title, description });
-
+    idea.author = user;
     if (!idea) {
       throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
     }
-
-    idea = await this.ideas.save(idea);
-    return { ...idea, author: user.toResponseObject() };
+    await this.ideas.save(idea);
+    return this.ideaToResponseObject(idea);
   }
   async update(
     id: string,
     { title, description }: Partial<IdeaDTO>,
+    token: UUID,
   ): Promise<IdeaDTO | undefined> {
-    const updated = await this.ideas.update({ id }, { title, description });
-    if (!updated) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
-    let idea = await this.ideas.findOne({ where: { id } });
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
-    let user = await idea.author;
-    return { ...idea, author: user.toResponseObject() };
-  }
-  async find(id: string): Promise<IdeaDTO | undefined> {
-    let idea = await this.ideas.findOne({ where: { id } });
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
-    const user = await idea.author;
-    return { ...idea, author: user.toResponseObject() };
-  }
-  async destroy(id: string) {
-    const idea = await this.ideas.delete({ id });
+    let idea = await this.ideas.findOne({
+      where: { id },
+      relations: ['author'],
+    });
     if (!idea) {
       throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
     }
 
+    this.ensureOwnership(idea, token);
+    const updated = await this.ideas.update({ id }, { title, description });
+    if (!updated) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+    idea = (await this.ideas.findOne({ where: { id } })) as Idea;
+    return this.ideaToResponseObject(idea);
+  }
+  async find(id: string): Promise<IdeaDTO> {
+    let idea = await this.ideas.findOne({
+      where: { id },
+      relations: ['author'],
+    });
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+    return this.ideaToResponseObject(idea);
+  }
+  async destroy(id: string, user: UUID) {
+    let idea = await this.ideas.findOne({ where: { id } });
+    if (!idea) {
+      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
+    }
+    this.ensureOwnership(idea, user);
+    await this.ideas.delete({ id });
     return { deleted: true };
   }
   async get(page: number = 1) {
@@ -72,6 +80,11 @@ export class IdeaService {
     };
     const ideas = await this.ideas.find(options);
     return ideas.map((idea: Idea) => this.ideaToResponseObject(idea));
+  }
+  private ensureOwnership(idea: Idea, { id }: UUID) {
+    if (idea.author.id !== id) {
+      throw new HttpException('Unauthorized attempt', HttpStatus.UNAUTHORIZED);
+    }
   }
   private ideaToResponseObject(idea: Idea): IdeaDTO {
     const responseObject: any = {

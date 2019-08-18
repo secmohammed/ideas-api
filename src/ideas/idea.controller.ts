@@ -41,14 +41,17 @@ export class IdeaController {
     return idea;
   }
   @Put(':id')
+  @UseGuards(new AuthGuard())
   update(
-    @Param('id') id: string,
+    @User() { id }: UUID,
+    @Param('id') ideaId: string,
     @Body() { title, description }: CreateIdea,
   ): Promise<IdeaDTO | undefined> {
-    return this.ideas.update(id, { title, description });
+    return this.ideas.update(ideaId, { title, description }, { id });
   }
   @Delete(':id')
-  destroy(@Param('id') id: string) {
-    return this.ideas.destroy(id);
+  @UseGuards(new AuthGuard())
+  destroy(@Param('id') ideaId: string, @User() user: any) {
+    return this.ideas.destroy(ideaId, user);
   }
 }
