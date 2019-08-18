@@ -9,4 +9,6 @@ export interface Idea {
   created_at: Date;
   updated_at: Date;
   author: UserDTO;
+  upvotes?: number;
+  downvotes?: number;
 }

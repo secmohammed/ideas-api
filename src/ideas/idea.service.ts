@@ -47,13 +47,16 @@ export class IdeaService {
     if (!updated) {
       throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
     }
-    idea = (await this.ideas.findOne({ where: { id } })) as Idea;
+    idea = (await this.ideas.findOne({
+      where: { id },
+      relations: ['author', 'upvotes', 'downvotes'],
+    })) as Idea;
     return this.ideaToResponseObject(idea);
   }
   async find(id: string): Promise<IdeaDTO> {
     let idea = await this.ideas.findOne({
       where: { id },
-      relations: ['author'],
+      relations: ['author', 'upvotes', 'downvotes'],
     });
     if (!idea) {
       throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
@@ -71,7 +74,7 @@ export class IdeaService {
   }
   async get(page: number = 1) {
     const options: FindManyOptions = {
-      relations: ['author'],
+      relations: ['author', 'upvotes', 'downvotes'],
       take: 25,
       order: {
         created_at: 'DESC',
@@ -91,6 +94,12 @@ export class IdeaService {
       ...idea,
       author: idea.author ? idea.author.toResponseObject(false) : null,
     };
+    if (responseObject.upvotes) {
+      responseObject.upvotes = idea.upvotes.length;
+    }
+    if (responseObject.downvotes) {
+      responseObject.downvotes = idea.downvotes.length;
+    }
     return responseObject;
   }
 }

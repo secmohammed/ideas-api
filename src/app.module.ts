@@ -5,9 +5,16 @@ import { HttpErrorFilter } from './shared/http-error.filter';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 import { IdeaModule } from './ideas/idea.module';
 import { UsersModule } from './users/users.module';
-
+import { BookmarksModule } from './bookmarks/bookmarks.module';
+import { VotesModule } from './votes/votes.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(), IdeaModule, UsersModule],
+  imports: [
+    TypeOrmModule.forRoot(),
+    IdeaModule,
+    UsersModule,
+    BookmarksModule,
+    VotesModule,
+  ],
   controllers: [],
   providers: [
     {

@@ -1,3 +1,4 @@
+import { IdeaEntity } from '../ideas/idea.entity';
 export interface UserDTO extends User {
   id: string;
 }
@@ -7,4 +8,5 @@ export interface User {
   email: string;
   created_at: Date;
   token?: string;
+  bookmarks?: IdeaEntity[];
 }

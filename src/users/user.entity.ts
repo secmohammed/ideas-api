@@ -6,6 +6,8 @@ import {
   BeforeInsert,
   BaseEntity,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { hash } from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -34,6 +36,16 @@ export class UserEntity extends BaseEntity {
     cascade: true,
   })
   ideas: IdeaEntity[];
+  @ManyToMany(() => IdeaEntity, { cascade: true })
+  @JoinTable()
+  bookmarks: IdeaEntity[];
+  @ManyToMany(() => IdeaEntity, { cascade: true })
+  @JoinTable()
+  upvotes: IdeaEntity[];
+  @ManyToMany(() => IdeaEntity, { cascade: true })
+  @JoinTable()
+  downvotes: IdeaEntity[];
+
   @BeforeInsert()
   async hashPassword() {
     this.password = await hash(this.password, 12);
@@ -45,10 +57,34 @@ export class UserEntity extends BaseEntity {
     });
   }
   toResponseObject(showToken: boolean = true) {
-    const { id, created_at, username, email, token } = this;
-    let responseObject = { id, username, email, created_at };
+    const {
+      id,
+      created_at,
+      username,
+      email,
+      token,
+      ideas,
+      bookmarks,
+      upvotes,
+      downvotes,
+    } = this;
+    let responseObject: any = { id, username, email, created_at };
     if (showToken) {
-      return { ...responseObject, token };
+      responseObject.token = token;
+    }
+    if (ideas) {
+      responseObject.ideas = ideas;
+    }
+    if (bookmarks) {
+      responseObject.bookmarks = bookmarks;
+    }
+    if (upvotes.length) {
+      responseObject.upvotes = upvotes;
+      responseObject.upvotes_count = upvotes.length;
+    }
+    if (downvotes.length) {
+      responseObject.downvotes = downvotes;
+      responseObject.downvotes_count = downvotes.length;
     }
     return responseObject;
   }
