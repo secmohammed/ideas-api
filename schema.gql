@@ -11,6 +11,10 @@ type CommentEntity {
   idea: IdeaEntity!
 }
 
+input CreateComment {
+  body: String!
+}
+
 input CreateIdea {
   title: String!
   description: String!
@@ -37,12 +41,17 @@ type Mutation {
   createIdea(data: CreateIdea!): IdeaEntity!
   updateIdea(data: CreateIdea!, id: String!): IdeaEntity!
   destroyIdea(id: String!): IdeaEntity!
+  createComment(data: CreateComment!, id: String!): CommentEntity!
+  destroyComment(id: String!): CommentEntity!
 }
 
 type Query {
   ideas(page: Float = 1): [IdeaEntity!]!
   idea(id: String!): IdeaEntity!
   users(page: Float = 1): [UserEntity!]!
+  showComment(id: String!): CommentEntity!
+  indexIdeaComments(page: Float = 1, id: String!): [CommentEntity!]!
+  indexUserComments(page: Float = 1, id: String!): [CommentEntity!]!
 }
 
 type UserEntity {
@@ -55,4 +64,8 @@ type UserEntity {
   bookmarks: [IdeaEntity!]
   upvotes: [IdeaEntity!]
   downvotes: [IdeaEntity!]
+}
+
+input UUID {
+  id: String!
 }
