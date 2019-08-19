@@ -31,8 +31,10 @@ export class UserService {
     // return users.map(user => user.toResponseObject(false));
   }
   async login(data: LoginUser): Promise<UserDTO> {
-    const user = await this.users.findOne({ where: { email: data.email } });
-    if (!user || !compareSync(data.password, user.password)) {
+    const user = await this.users.findOneOrFail({
+      where: { email: data.email },
+    });
+    if (!compareSync(data.password, user.password)) {
       throw new HttpException('Invalid Credentials', HttpStatus.UNAUTHORIZED);
     }
     return user.toResponseObject();

@@ -37,10 +37,17 @@ type IdeaEntity {
   comments: [CommentEntity!]!
 }
 
+input LoginUser {
+  email: String!
+  password: String!
+}
+
 type Mutation {
   createIdea(data: CreateIdea!): IdeaEntity!
   updateIdea(data: CreateIdea!, id: String!): IdeaEntity!
   destroyIdea(id: String!): IdeaEntity!
+  login(data: LoginUser!): UserEntity!
+  register(data: RegisterUser!): UserEntity!
   createComment(data: CreateComment!, id: String!): CommentEntity!
   destroyComment(id: String!): CommentEntity!
 }
@@ -49,9 +56,17 @@ type Query {
   ideas(page: Float = 1): [IdeaEntity!]!
   idea(id: String!): IdeaEntity!
   users(page: Float = 1): [UserEntity!]!
+  me: UserEntity!
   showComment(id: String!): CommentEntity!
   indexIdeaComments(page: Float = 1, id: String!): [CommentEntity!]!
   indexUserComments(page: Float = 1, id: String!): [CommentEntity!]!
+}
+
+input RegisterUser {
+  email: String!
+  password: String!
+  password_confirmation: String!
+  username: String!
 }
 
 type UserEntity {
