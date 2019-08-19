@@ -52,7 +52,7 @@ export class IdeaService {
     let idea = await this.ideas.findOneOrFail({ where: { id } });
     this.ensureOwnership(idea, user);
     await this.ideas.delete({ id });
-    return { deleted: true };
+    return idea;
   }
   async get(page: number = 1, recent: boolean = true) {
     const options: FindManyOptions = {

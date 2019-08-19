@@ -7,8 +7,6 @@ import {
   Put,
   Param,
   Body,
-  HttpException,
-  HttpStatus,
   UseGuards,
   Query,
 } from '@nestjs/common';
@@ -35,11 +33,7 @@ export class IdeaController {
   }
   @Get(':id')
   async show(@Param('id') id: string): Promise<IdeaDTO> {
-    const idea = await this.ideas.find(id);
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
-    return idea;
+    return this.ideas.find(id);
   }
   @Put(':id')
   @UseGuards(new AuthGuard())

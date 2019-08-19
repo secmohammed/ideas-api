@@ -11,6 +11,11 @@ type CommentEntity {
   idea: IdeaEntity!
 }
 
+input CreateIdea {
+  title: String!
+  description: String!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
@@ -28,8 +33,16 @@ type IdeaEntity {
   comments: [CommentEntity!]!
 }
 
+type Mutation {
+  createIdea(data: CreateIdea!): IdeaEntity!
+  updateIdea(data: CreateIdea!, id: String!): IdeaEntity!
+  destroyIdea(id: String!): IdeaEntity!
+}
+
 type Query {
-  users: [UserEntity!]!
+  ideas(page: Float = 1): [IdeaEntity!]!
+  idea(id: String!): IdeaEntity!
+  users(page: Float = 1): [UserEntity!]!
 }
 
 type UserEntity {
