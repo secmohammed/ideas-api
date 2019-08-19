@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Body, UseGuards, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { LoginUser } from './login-user.validation';
 import { RegisterUser } from './register-user.validation';
@@ -9,8 +9,8 @@ import { UUID } from './uuid-validation';
 export class UserController {
   constructor(private readonly users: UserService) {}
   @Get()
-  index() {
-    return this.users.get();
+  index(@Query('page') page: number) {
+    return this.users.get(page);
   }
   @Post('/login')
   login(@Body() data: LoginUser) {

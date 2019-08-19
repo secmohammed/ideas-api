@@ -17,15 +17,9 @@ export class IdeaService {
     { title, description }: Partial<IdeaDTO>,
     { id }: UUID,
   ): Promise<IdeaDTO> {
-    const user = await this.users.findOne({ id });
-    if (!user) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
+    const user = await this.users.findOneOrFail({ id });
     let idea = await this.ideas.create({ title, description });
     idea.author = user;
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
     await this.ideas.save(idea);
     return this.ideaToResponseObject(idea);
   }
@@ -34,19 +28,13 @@ export class IdeaService {
     { title, description }: Partial<IdeaDTO>,
     token: UUID,
   ): Promise<IdeaDTO | undefined> {
-    let idea = await this.ideas.findOne({
+    let idea = await this.ideas.findOneOrFail({
       where: { id },
       relations: ['author'],
     });
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
 
     this.ensureOwnership(idea, token);
-    const updated = await this.ideas.update({ id }, { title, description });
-    if (!updated) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
+    await this.ideas.update({ id }, { title, description });
     idea = (await this.ideas.findOne({
       where: { id },
       relations: ['author', 'upvotes', 'downvotes'],
@@ -54,30 +42,24 @@ export class IdeaService {
     return this.ideaToResponseObject(idea);
   }
   async find(id: string): Promise<IdeaDTO> {
-    let idea = await this.ideas.findOne({
+    let idea = await this.ideas.findOneOrFail({
       where: { id },
       relations: ['author', 'upvotes', 'downvotes'],
     });
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
     return this.ideaToResponseObject(idea);
   }
   async destroy(id: string, user: UUID) {
-    let idea = await this.ideas.findOne({ where: { id } });
-    if (!idea) {
-      throw new HttpException('Record not found', HttpStatus.NOT_FOUND);
-    }
+    let idea = await this.ideas.findOneOrFail({ where: { id } });
     this.ensureOwnership(idea, user);
     await this.ideas.delete({ id });
     return { deleted: true };
   }
-  async get(page: number = 1) {
+  async get(page: number = 1, recent: boolean = true) {
     const options: FindManyOptions = {
       relations: ['author', 'upvotes', 'downvotes'],
       take: 25,
       order: {
-        created_at: 'DESC',
+        created_at: recent ? 'DESC' : 'ASC',
       },
       skip: 25 * (page - 1),
     };

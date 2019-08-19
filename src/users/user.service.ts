@@ -20,8 +20,13 @@ export class UserService {
     }
     return user.toResponseObject(false);
   }
-  async get(): Promise<UserDTO[]> {
-    const users = await this.users.find();
+  async get(page: number = 1): Promise<UserDTO[]> {
+    const options = {
+      relations: ['ideas', 'bookmarks'],
+      skip: 25 * (page - 1),
+      take: 25,
+    };
+    const users = await this.users.find(options);
     return users.map(user => user.toResponseObject(false));
   }
   async login(data: LoginUser): Promise<UserDTO> {

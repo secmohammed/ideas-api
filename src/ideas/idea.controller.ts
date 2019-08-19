@@ -10,6 +10,7 @@ import {
   HttpException,
   HttpStatus,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '../shared/auth.guard';
 import { User } from '../users/user.decorator';
@@ -20,8 +21,8 @@ import { IdeaDTO } from './idea.dto';
 export class IdeaController {
   constructor(private readonly ideas: IdeaService) {}
   @Get()
-  index(): Promise<IdeaDTO[]> {
-    return this.ideas.get();
+  index(@Query('page') page: number): Promise<IdeaDTO[]> {
+    return this.ideas.get(page);
   }
   @Post()
   @UseGuards(new AuthGuard())

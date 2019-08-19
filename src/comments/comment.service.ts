@@ -51,10 +51,12 @@ export class CommentService {
     });
     return this.toResponseObject(comment);
   }
-  async findByIdeaId(ideaId: string): Promise<CommentDTO[]> {
+  async findByIdeaId(ideaId: string, page: number = 1): Promise<CommentDTO[]> {
     const comments = (await this.comments.find({
       where: { ideaId },
       relations: ['author', 'idea'],
+      take: 25,
+      skip: 25 * (page - 1),
     })) as CommentEntity[];
     return comments.map(comment => this.toResponseObject(comment));
   }
@@ -73,10 +75,12 @@ export class CommentService {
     await this.comments.save(comment);
     return this.toResponseObject(comment);
   }
-  async findByUserId(id: string): Promise<CommentDTO[]> {
+  async findByUserId(id: string, page: number = 1): Promise<CommentDTO[]> {
     const comments = (await this.comments.find({
       where: { userId: id },
       relations: ['author', 'idea'],
+      take: 25,
+      skip: 25 * (page - 1),
     })) as CommentEntity[];
     return comments.map(comment => this.toResponseObject(comment));
   }

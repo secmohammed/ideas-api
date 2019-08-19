@@ -6,6 +6,7 @@ import {
   UseGuards,
   Body,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { AuthGuard } from '../shared/auth.guard';
@@ -22,12 +23,12 @@ export class CommentController {
     return this.comments.find(id);
   }
   @Get('ideas/:id')
-  indexCommentsForIdea(@Param() { id }: UUID) {
-    return this.comments.findByIdeaId(id);
+  indexCommentsForIdea(@Param() { id }: UUID, @Query('page') page: number) {
+    return this.comments.findByIdeaId(id, page);
   }
   @Get('users/:id')
-  indexCommentsForUser(@Param() { id }: UUID) {
-    return this.comments.findByUserId(id);
+  indexCommentsForUser(@Param() { id }: UUID, @Query('page') page: number) {
+    return this.comments.findByUserId(id, page);
   }
 
   @Post('/ideas/:id')
