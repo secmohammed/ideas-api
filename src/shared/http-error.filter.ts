@@ -13,18 +13,24 @@ export class HttpErrorFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const request = ctx.getRequest();
     const response = ctx.getResponse();
-    const status = exception.getStatus
+    let status = exception.getStatus
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
+    let message: string =
+      status !== HttpStatus.INTERNAL_SERVER_ERROR
+        ? exception.message.error || exception.message || null
+        : 'Internal server error';
+    if (exception.name === 'EntityNotFound') {
+      status = HttpStatus.NOT_FOUND;
+      message = 'could not find this record.';
+    }
+
     const errorResponse = {
       code: status,
       timestamp: new Date().toLocaleString(),
       path: request.url,
       method: request.method,
-      message:
-        status !== HttpStatus.INTERNAL_SERVER_ERROR
-          ? exception.message.error || exception.message || null
-          : 'Internal server error',
+      message,
     };
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       console.error(exception);

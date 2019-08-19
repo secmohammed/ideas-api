@@ -7,6 +7,7 @@ import { IdeaModule } from './ideas/idea.module';
 import { UsersModule } from './users/users.module';
 import { BookmarksModule } from './bookmarks/bookmarks.module';
 import { VotesModule } from './votes/votes.module';
+import { CommentsModule } from './comments/comments.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
@@ -14,6 +15,7 @@ import { VotesModule } from './votes/votes.module';
     UsersModule,
     BookmarksModule,
     VotesModule,
+    CommentsModule,
   ],
   controllers: [],
   providers: [

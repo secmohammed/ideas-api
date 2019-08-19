@@ -12,6 +12,7 @@ import {
 import { hash } from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { IdeaEntity } from '../ideas/idea.entity';
+import { CommentEntity } from '../comments/comment.entity';
 @Entity('users')
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -36,6 +37,10 @@ export class UserEntity extends BaseEntity {
     cascade: true,
   })
   ideas: IdeaEntity[];
+  @OneToMany(() => CommentEntity, comment => comment.author, {
+    cascade: true,
+  })
+  comments: IdeaEntity[];
   @ManyToMany(() => IdeaEntity, { cascade: true })
   @JoinTable()
   bookmarks: IdeaEntity[];
@@ -67,10 +72,14 @@ export class UserEntity extends BaseEntity {
       bookmarks,
       upvotes,
       downvotes,
+      comments,
     } = this;
     let responseObject: any = { id, username, email, created_at };
     if (showToken) {
       responseObject.token = token;
+    }
+    if (comments) {
+      responseObject.comments = comments;
     }
     if (ideas) {
       responseObject.ideas = ideas;
@@ -78,11 +87,11 @@ export class UserEntity extends BaseEntity {
     if (bookmarks) {
       responseObject.bookmarks = bookmarks;
     }
-    if (upvotes.length) {
+    if (upvotes && upvotes.length) {
       responseObject.upvotes = upvotes;
       responseObject.upvotes_count = upvotes.length;
     }
-    if (downvotes.length) {
+    if (downvotes && downvotes.length) {
       responseObject.downvotes = downvotes;
       responseObject.downvotes_count = downvotes.length;
     }

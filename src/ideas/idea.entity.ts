@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   ManyToOne,
   ManyToMany,
+  OneToMany,
   JoinTable,
 } from 'typeorm';
 import { UserEntity } from '../users/user.entity';
+import { CommentEntity } from '../comments/comment.entity';
 @Entity('ideas')
 export class IdeaEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
@@ -33,4 +35,6 @@ export class IdeaEntity {
   @ManyToMany(() => UserEntity, { cascade: true })
   @JoinTable()
   downvotes: UserEntity[];
+  @OneToMany(() => CommentEntity, comments => comments.idea)
+  comments: CommentEntity[];
 }
