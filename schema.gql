@@ -53,6 +53,8 @@ type Mutation {
   destroyIdea(id: String!): IdeaEntity!
   login(data: LoginUser!): Auth!
   register(data: RegisterUser!): UserEntity!
+  bookmark(idea: String!): UserEntity!
+  destroy(idea: String!): UserEntity!
   createComment(data: CreateComment!, id: String!): CommentEntity!
   destroyComment(id: String!): CommentEntity!
 }
@@ -62,6 +64,7 @@ type Query {
   idea(id: String!): IdeaEntity!
   users(page: Float = 1): [UserEntity!]!
   me: UserEntity!
+  bookmarks: UserEntity!
   showComment(id: String!): CommentEntity!
   indexIdeaComments(page: Float = 1, id: String!): [CommentEntity!]!
   indexUserComments(page: Float = 1, id: String!): [CommentEntity!]!
