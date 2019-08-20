@@ -1,33 +1,20 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { HttpErrorFilter } from './shared/http-error.filter';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './shared/logging.interceptor';
-import { IdeaModule } from './ideas/idea.module';
-import { UsersModule } from './users/users.module';
-import { BookmarksModule } from './bookmarks/bookmarks.module';
-import { VotesModule } from './votes/votes.module';
-import { CommentsModule } from './comments/comments.module';
+import { APIModule } from './api.module';
 import { GraphQLModule } from '@nestjs/graphql';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
+
+      context: ({ req }) => ({ headers: req.headers }),
+      debug: true,
     }),
-    IdeaModule,
-    UsersModule,
-    BookmarksModule,
-    VotesModule,
-    CommentsModule,
+    APIModule,
   ],
-  controllers: [],
   providers: [
-    {
-      provide: APP_FILTER,
-      useClass: HttpErrorFilter,
-    },
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,

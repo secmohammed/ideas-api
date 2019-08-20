@@ -1,9 +1,8 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation, Context } from '@nestjs/graphql';
 import { CommentEntity } from './comment.entity';
 import { CommentService } from './comment.service';
 import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../shared/auth.guard';
-import { User } from '../users/user.decorator';
 import { CreateComment } from './create-comment.validation';
 @Resolver(() => CommentEntity)
 export class CommentResolver {
@@ -31,7 +30,7 @@ export class CommentResolver {
   @UseGuards(new AuthGuard())
   store(
     @Args('id') id: string,
-    @User('id') user: string,
+    @Context('user') user: any,
     @Args('data') data: CreateComment,
   ) {
     return this.comments.create(id, user, data);
@@ -39,7 +38,7 @@ export class CommentResolver {
 
   @UseGuards(new AuthGuard())
   @Mutation(() => CommentEntity, { name: 'destroyComment' })
-  destroy(@Args('id') id: string, @User('id') user: string) {
+  destroy(@Args('id') id: string, @Context('user') user: any) {
     return this.comments.destroy(id, user);
   }
 }

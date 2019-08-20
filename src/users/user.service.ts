@@ -13,11 +13,8 @@ export class UserService {
     @InjectRepository(User)
     private readonly users: Repository<User>,
   ) {}
-  async me({ id }: UUID): Promise<UserDTO | undefined> {
-    const user = await this.users.findOne({ id });
-    if (!user) {
-      return undefined;
-    }
+  async me({ id }: UUID): Promise<UserDTO> {
+    const user = await this.users.findOneOrFail({ id });
     return user.toResponseObject(false);
   }
   async get(page: number = 1) {
@@ -26,9 +23,9 @@ export class UserService {
       skip: 25 * (page - 1),
       take: 25,
     };
-    return this.users.find(options);
-
-    // return users.map(user => user.toResponseObject(false));
+    const users = await this.users.find(options);
+    // safer to do so for the rest api to hide the password field, however this is reduandant for graphql
+    return users.map(user => user.toResponseObject(false));
   }
   async login(data: LoginUser): Promise<UserDTO> {
     const user = await this.users.findOneOrFail({
@@ -37,6 +34,7 @@ export class UserService {
     if (!compareSync(data.password, user.password)) {
       throw new HttpException('Invalid Credentials', HttpStatus.UNAUTHORIZED);
     }
+    console.log(user);
     return user.toResponseObject();
   }
   async register({

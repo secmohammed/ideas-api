@@ -2165,10 +2165,6 @@
         "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
-      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": {
-        "version": "5dec4a1cea3b75ffe6bf167263d816a0de157fd897261537af1e6f3236fc39cd",
-        "signature": "c219c7af45c6925b9eca1c632fa2aa0709da2ae9d375983e90ce9b080f5c4a2f"
-      },
       "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/operators/audit.d.ts": {
         "version": "fe936a68d281ccc2060f8c3de69a0682a807c8fd1b8abccc0a91b83195ca0f94",
         "signature": "fe936a68d281ccc2060f8c3de69a0682a807c8fd1b8abccc0a91b83195ca0f94"
@@ -4110,7 +4106,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "/users/mohammed/projects/ideas-api/src/shared/logging.interceptor.ts": {
-        "version": "ab884b04d4d10bdc616e215acb9ecb1c0d68b68617247b306b7d29e6851a69d3",
+        "version": "eceb750b2f44d1c85a475134b905604a38dc102090f6d142dc960b66b3adba8c",
         "signature": "421d4c11b51bf25e07f8ef2191b3bf79a767bf1ec16f670759974f3ffce869af"
       },
       "/users/mohammed/projects/ideas-api/node_modules/class-validator/validation/validationerror.d.ts": {
@@ -4570,7 +4566,7 @@
         "signature": "a6f6e7d8a4ce86803650017bb82cc9823a914ac11afc99e150c423c6f97b2482"
       },
       "/users/mohammed/projects/ideas-api/src/shared/auth.guard.ts": {
-        "version": "30c2fc585e6af3c08ccd353be8c53e3ee0adc73b8a071878d3a179ff3333adfd",
+        "version": "68e298d9be59a635ebdaed0888c4b4c2380bfc3e4278e70d965ceb2f143eb39a",
         "signature": "cd5f69ffb64033740d6741172e787f9e64786e13d3c30b7e64985a3f6e219e83"
       },
       "/users/mohammed/projects/ideas-api/src/users/user.decorator.ts": {
@@ -4586,8 +4582,8 @@
         "signature": "85166e23a89fce6c472709743f78f3438f1e074fc4612e413db411115174d593"
       },
       "/users/mohammed/projects/ideas-api/src/ideas/idea.resolver.ts": {
-        "version": "edbca270337b3d2f253e76bdbc12937a424227c95dd952d3ff5b689f683f17a7",
-        "signature": "9f9c98c4a3ae089dc1553bd6b51cb48342da7d622a423e7d431bffd5c0126890"
+        "version": "660f90aca3b71707dc49b93dc95515dd31b63adda0551e5f33ea468244241f07",
+        "signature": "c1fbc13cbe3edddaae08f586f25bfe1a918b3dbc8120f967fcbb5ae50ca3cd96"
       },
       "/users/mohammed/projects/ideas-api/src/ideas/idea.module.ts": {
         "version": "6e072daf2704c256e392ec102683e356851a47b11d1c1f0544edb08bda8a7285",
@@ -4602,16 +4598,20 @@
         "signature": "b921dd890718593038deb9b3a2989b91ba485147d28c0613cca7dbf0ccb65a4b"
       },
       "/users/mohammed/projects/ideas-api/src/users/user.service.ts": {
-        "version": "2c1e28db980edcab10e30237f6c3c5f5b5e283c87604e9e0355440057dccbbb9",
-        "signature": "cad12a2ca236c54a07c7f69e1cc5824e01c1f7545dea040bee283d5018a44a8f"
+        "version": "2651c1dbed6fc0b4929629c99174fe982383281ed190592acde61afa69acff50",
+        "signature": "d1b166e43a362f7589dc15480f67aa8612c3df92f94d927c705fbde52f54ae58"
       },
       "/users/mohammed/projects/ideas-api/src/users/user.controller.ts": {
         "version": "6d671ef24ec68cf4bfeb10700b7ddcaf23f5a86c226670ac53e90fad22c63710",
-        "signature": "3b649edcddd7e481cb3566538af2c44bb2ed757ff948140847716aa718d7d7c1"
+        "signature": "867508df4a0a9d17aeff4414dc0e8ba8e7b1a9a85f04fe842a8ec082f817b916"
+      },
+      "/users/mohammed/projects/ideas-api/src/users/auth.type.ts": {
+        "version": "9ae83d47f90d869e090db400bd0089cd2634fd3941ef8c1b7ad6985bb3fff7ca",
+        "signature": "e54df99c4a1aa56b04e0628eecf053e850214045bedf349ea41ccefc4ad3b4dd"
       },
       "/users/mohammed/projects/ideas-api/src/users/user.resolver.ts": {
-        "version": "e8a9f63bb6f75b3d92fca83574445a2b5525be2260e378d87778b3cc182daa1d",
-        "signature": "e9ce8f60c5f8b136552a3e7bac7586269d6177911ec22461f5060817dac1122d"
+        "version": "a5eec69e5a0e803f6bfd0c967a0afcecc7281b312a664ef267b815b518766c23",
+        "signature": "9e7b646b576a4d000c56c2cc3b657fb01baf36ae54f54b6e6e6df33a7ff6710b"
       },
       "/users/mohammed/projects/ideas-api/src/users/users.module.ts": {
         "version": "d2a72543bc5bf361904736f5edad633c19056b769ddb39df241975a90a4c6048",
@@ -4662,20 +4662,20 @@
         "signature": "3cb90b42f3ad73140e2881f745843c4c2d9542b082e5a0a5f5c57bbdb53aa4d9"
       },
       "/users/mohammed/projects/ideas-api/src/comments/comment.resolver.ts": {
-        "version": "d2ab4b249e631626343ca0c40b0aca21b1b4f33cf6ad4c1259cc47538109b9fa",
-        "signature": "fb4ec4dad56c1967c361b56841afb5034f1d6a562f5309dbfc4bb5e7892869ed"
+        "version": "4b38be6d65a29345b22807bdf8a7603e1e8752496470620c1bdf9d1ac288c26d",
+        "signature": "30cb656684be829662436fc8ed7610f02fe685d17cf0e1cd73bd38e0a598a4e1"
       },
       "/users/mohammed/projects/ideas-api/src/comments/comments.module.ts": {
         "version": "c7b07a338abcb253d71d9636288c3a92b325c9cc4abfae7cc5f3a9b572ab6219",
         "signature": "9fa0fce55c0ac7b4cdd12d9740f3a375675ba9bc9047500da6555998314ef79f"
       },
-      "/users/mohammed/projects/ideas-api/src/app.module.ts": {
-        "version": "d18627ef3b04c20106bddd21332cd61539734dc22f1442e1142c4813422958dc",
-        "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
+      "/users/mohammed/projects/ideas-api/src/api.module.ts": {
+        "version": "cf8c459d367941fccaa4297fd0cfe62b58ab9992c0c028169c673fa4bf35cdaa",
+        "signature": "eec876c2154bb3a018313162414482af70a8a2e8c87222767bc8c2d09cd8546a"
       },
-      "/users/mohammed/projects/ideas-api/src/graphql.ts": {
-        "version": "d78b9134d2bbab078aba55c94e87e50fc0905f175fe9fdf8cd7d7fd497d4c618",
-        "signature": "5eb2a99ec89e7e945e49823fe9d4380edad7b24de487eee9a16097c3078137eb"
+      "/users/mohammed/projects/ideas-api/src/app.module.ts": {
+        "version": "cd6771541f165aed55d490499387117176d2ba600131c0d05a13f927743ce31b",
+        "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/classtransformoptions.d.ts": {
         "version": "d89af0c250e1424959162beae79f2c2745c729d6ab8028503d322395d96d3a2b",
@@ -4709,9 +4709,25 @@
         "version": "78afdc4c09b8664ccf841041488e79c81c7a8a9712916c76208e20614670c729",
         "signature": "059801820d99899d084e12a12813c37be8c52e7242d1ff531b19a187080c8168"
       },
+      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": {
+        "version": "486604b77f8b030f4f46e15a8169f4fd05db0e1ee59ef7f48f1fb85939872f2a",
+        "signature": "c219c7af45c6925b9eca1c632fa2aa0709da2ae9d375983e90ce9b080f5c4a2f"
+      },
+      "/users/mohammed/projects/ideas-api/src/shared/graphql-error.filter.ts": {
+        "version": "d456e5c4ce07ee166c332b2314fb78b01b81d0ba9c06a6652c4d9ff1f3c11f4e",
+        "signature": "8697d40410d2af73c0b924fae66eb1edbb162ce45f785dd66af41d3263d71b1b"
+      },
       "/users/mohammed/projects/ideas-api/src/main.ts": {
-        "version": "ab403413d2e876b450cb425f56c354f6899c9c9890023570f02fcfd4d3c7e652",
+        "version": "e185069e127c3f1c0ebe0fa5b21b52d010717cc5001d094f83583a3a360675c4",
         "signature": "5c9cd8ba4f81982e8002c709ba0f6675b7aaf1def7f8a98a9996040a3e1c2bc0"
+      },
+      "/users/mohammed/projects/ideas-api/src/bookmarks/bookmark.resolver.ts": {
+        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "/users/mohammed/projects/ideas-api/src/shared/date.scalar.ts": {
+        "version": "bb3840286dceb85cd3175c51764549aa651002ce2fa9b64ea590d8ab2510c6f9",
+        "signature": "0bbabc5ce949a04281b4b9e5c05831e8a47d76f08b1848a3d3b9c00c9c452ac1"
       },
       "/users/mohammed/projects/ideas-api/node_modules/@babel/types/lib/index.d.ts": {
         "version": "bc12492fa90cd2ad3f73c10efa597503dbf59ebac0e3c9728cc10adaad6b0b87",
@@ -8315,11 +8331,6 @@
       ],
       "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/index.d.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/dist/index.d.ts",
-        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
-        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": [
-        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -12366,6 +12377,7 @@
       ],
       "/users/mohammed/projects/ideas-api/src/shared/auth.guard.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/jsonwebtoken/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
@@ -12399,7 +12411,6 @@
         "/users/mohammed/projects/ideas-api/src/ideas/idea.entity.ts",
         "/users/mohammed/projects/ideas-api/src/ideas/create-idea.validation.ts",
         "/users/mohammed/projects/ideas-api/src/users/uuid-validation.ts",
-        "/users/mohammed/projects/ideas-api/src/users/user.decorator.ts",
         "/users/mohammed/projects/ideas-api/src/ideas/idea.service.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
@@ -12452,15 +12463,20 @@
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "/users/mohammed/projects/ideas-api/src/users/auth.type.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/type-graphql/dist/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "/users/mohammed/projects/ideas-api/src/users/user.resolver.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
         "/users/mohammed/projects/ideas-api/src/shared/auth.guard.ts",
-        "/users/mohammed/projects/ideas-api/src/users/user.decorator.ts",
         "/users/mohammed/projects/ideas-api/src/users/uuid-validation.ts",
         "/users/mohammed/projects/ideas-api/src/users/user.entity.ts",
         "/users/mohammed/projects/ideas-api/src/users/user.service.ts",
         "/users/mohammed/projects/ideas-api/src/users/login-user.validation.ts",
+        "/users/mohammed/projects/ideas-api/src/users/auth.type.ts",
         "/users/mohammed/projects/ideas-api/src/users/register-user.validation.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
@@ -12585,7 +12601,6 @@
         "/users/mohammed/projects/ideas-api/src/comments/comment.service.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
         "/users/mohammed/projects/ideas-api/src/shared/auth.guard.ts",
-        "/users/mohammed/projects/ideas-api/src/users/user.decorator.ts",
         "/users/mohammed/projects/ideas-api/src/comments/create-comment.validation.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
@@ -12602,22 +12617,25 @@
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "/users/mohammed/projects/ideas-api/src/app.module.ts": [
+      "/users/mohammed/projects/ideas-api/src/api.module.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/core/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/index.d.ts",
-        "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts",
         "/users/mohammed/projects/ideas-api/src/shared/logging.interceptor.ts",
         "/users/mohammed/projects/ideas-api/src/ideas/idea.module.ts",
         "/users/mohammed/projects/ideas-api/src/users/users.module.ts",
         "/users/mohammed/projects/ideas-api/src/bookmarks/bookmarks.module.ts",
         "/users/mohammed/projects/ideas-api/src/votes/votes.module.ts",
         "/users/mohammed/projects/ideas-api/src/comments/comments.module.ts",
-        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "/users/mohammed/projects/ideas-api/src/graphql.ts": [
+      "/users/mohammed/projects/ideas-api/src/app.module.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/core/index.d.ts",
+        "/users/mohammed/projects/ideas-api/src/shared/logging.interceptor.ts",
+        "/users/mohammed/projects/ideas-api/src/api.module.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -12667,11 +12685,34 @@
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/shared/graphql-error.filter.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "/users/mohammed/projects/ideas-api/src/main.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/core/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
         "/users/mohammed/projects/ideas-api/src/shared/validation.pipe.ts",
         "/users/mohammed/projects/ideas-api/src/app.module.ts",
+        "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts",
+        "/users/mohammed/projects/ideas-api/src/shared/graphql-error.filter.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/bookmarks/bookmark.resolver.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/shared/date.scalar.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@types/graphql/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -16277,9 +16318,6 @@
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/dist/index.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": [
-        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts"
       ],
       "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/operators/audit.d.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/types.d.ts",
@@ -20317,7 +20355,6 @@
         "/users/mohammed/projects/ideas-api/src/users/register-user.validation.ts"
       ],
       "/users/mohammed/projects/ideas-api/src/users/user.controller.ts": [
-        "/users/mohammed/projects/ideas-api/src/users/user.entity.ts",
         "/users/mohammed/projects/ideas-api/src/users/user.dto.ts",
         "/users/mohammed/projects/ideas-api/src/users/user.service.ts",
         "/users/mohammed/projects/ideas-api/src/users/login-user.validation.ts",
@@ -20327,7 +20364,6 @@
       "/users/mohammed/projects/ideas-api/src/users/user.resolver.ts": [
         "/users/mohammed/projects/ideas-api/src/users/user.dto.ts",
         "/users/mohammed/projects/ideas-api/src/users/user.service.ts",
-        "/users/mohammed/projects/ideas-api/src/users/user.entity.ts",
         "/users/mohammed/projects/ideas-api/src/users/login-user.validation.ts",
         "/users/mohammed/projects/ideas-api/src/users/register-user.validation.ts",
         "/users/mohammed/projects/ideas-api/src/users/uuid-validation.ts"
@@ -20422,6 +20458,17 @@
       ],
       "/users/mohammed/projects/ideas-api/src/shared/validation.pipe.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/shared/graphql-error.filter.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/common/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts"
+      ],
+      "/users/mohammed/projects/ideas-api/src/shared/date.scalar.ts": [
+        "/users/mohammed/projects/ideas-api/node_modules/@types/graphql/index.d.ts",
+        "/users/mohammed/projects/ideas-api/node_modules/@nestjs/graphql/index.d.ts"
       ],
       "/users/mohammed/projects/ideas-api/node_modules/@babel/types/lib/index.d.ts": [
         "/users/mohammed/projects/ideas-api/node_modules/@types/node/util.d.ts",
@@ -21107,7 +21154,6 @@
       "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/dist/typeorm.module.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/dist/index.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@nestjs/typeorm/index.d.ts",
-      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts",
       "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/operators/audit.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/operators/audittime.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/rxjs/internal/operators/buffer.d.ts",
@@ -21716,8 +21762,8 @@
       "/users/mohammed/projects/ideas-api/src/ideas/idea.module.ts",
       "/users/mohammed/projects/ideas-api/src/users/login-user.validation.ts",
       "/users/mohammed/projects/ideas-api/src/users/register-user.validation.ts",
-      "/users/mohammed/projects/ideas-api/src/users/user.service.ts",
       "/users/mohammed/projects/ideas-api/src/users/user.controller.ts",
+      "/users/mohammed/projects/ideas-api/src/users/auth.type.ts",
       "/users/mohammed/projects/ideas-api/src/users/user.resolver.ts",
       "/users/mohammed/projects/ideas-api/src/users/users.module.ts",
       "/users/mohammed/projects/ideas-api/src/bookmarks/bookmark.service.ts",
@@ -21733,8 +21779,8 @@
       "/users/mohammed/projects/ideas-api/src/comments/comment.controller.ts",
       "/users/mohammed/projects/ideas-api/src/comments/comment.resolver.ts",
       "/users/mohammed/projects/ideas-api/src/comments/comments.module.ts",
+      "/users/mohammed/projects/ideas-api/src/api.module.ts",
       "/users/mohammed/projects/ideas-api/src/app.module.ts",
-      "/users/mohammed/projects/ideas-api/src/graphql.ts",
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/classtransformoptions.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/classtransformer.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/metadata/exposeexcludeoptions.d.ts",
@@ -21743,7 +21789,11 @@
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/decorators.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/class-transformer/index.d.ts",
       "/users/mohammed/projects/ideas-api/src/shared/validation.pipe.ts",
+      "/users/mohammed/projects/ideas-api/src/shared/http-error.filter.ts",
+      "/users/mohammed/projects/ideas-api/src/shared/graphql-error.filter.ts",
       "/users/mohammed/projects/ideas-api/src/main.ts",
+      "/users/mohammed/projects/ideas-api/src/bookmarks/bookmark.resolver.ts",
+      "/users/mohammed/projects/ideas-api/src/shared/date.scalar.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@babel/types/lib/index.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@types/babel__generator/index.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@types/babel__traverse/index.d.ts",
@@ -21770,7 +21820,8 @@
       "/users/mohammed/projects/ideas-api/node_modules/@types/superagent/index.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@types/supertest/index.d.ts",
       "/users/mohammed/projects/ideas-api/node_modules/@types/yargs-parser/index.d.ts",
-      "/users/mohammed/projects/ideas-api/node_modules/@types/yargs/index.d.ts"
+      "/users/mohammed/projects/ideas-api/node_modules/@types/yargs/index.d.ts",
+      "/users/mohammed/projects/ideas-api/src/users/user.service.ts"
     ]
   },
   "version": "3.4.3"

@@ -14,12 +14,12 @@ export class LoggingInterceptor implements NestInterceptor {
     context: ExecutionContext,
     next: CallHandler<any>,
   ): Observable<any> {
-    const req = context.switchToHttp().getRequest();
     const now = Date.now();
-
+    const req = context.switchToHttp().getRequest();
     if (req) {
       const method = req.method;
       const url = req.url;
+
       return next
         .handle()
         .pipe(
@@ -30,19 +30,21 @@ export class LoggingInterceptor implements NestInterceptor {
             ),
           ),
         );
-    }
-    const ctx: any = GqlExecutionContext.create(context);
-    const resolverName = ctx.constructorRef.name;
-    const info = ctx.getInfo();
-    return next
-      .handle()
-      .pipe(
-        tap(() =>
-          Logger.log(
-            `"${info.parentType}" "${info.fieldName}" ${Date.now() - now}ms`,
-            resolverName,
+    } else {
+      const ctx: any = GqlExecutionContext.create(context);
+      const resolverName = ctx.constructorRef.name;
+      const info = ctx.getInfo();
+
+      return next
+        .handle()
+        .pipe(
+          tap(() =>
+            Logger.log(
+              `${info.parentType} "${info.fieldName}" ${Date.now() - now}ms`,
+              resolverName,
+            ),
           ),
-        ),
-      );
+        );
+    }
   }
 }

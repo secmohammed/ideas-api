@@ -3,6 +3,11 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Auth {
+  username: String!
+  token: String!
+}
+
 type CommentEntity {
   id: ID!
   created_at: DateTime!
@@ -46,7 +51,7 @@ type Mutation {
   createIdea(data: CreateIdea!): IdeaEntity!
   updateIdea(data: CreateIdea!, id: String!): IdeaEntity!
   destroyIdea(id: String!): IdeaEntity!
-  login(data: LoginUser!): UserEntity!
+  login(data: LoginUser!): Auth!
   register(data: RegisterUser!): UserEntity!
   createComment(data: CreateComment!, id: String!): CommentEntity!
   destroyComment(id: String!): CommentEntity!

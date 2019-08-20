@@ -1,10 +1,9 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation, Context } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../shared/auth.guard';
 import { IdeaEntity } from './idea.entity';
 import { CreateIdea } from './create-idea.validation';
 import { UUID } from '../users/uuid-validation';
-import { User } from '../users/user.decorator';
 import { IdeaService } from './idea.service';
 @Resolver(() => IdeaEntity)
 export class IdeaResolver {
@@ -23,14 +22,14 @@ export class IdeaResolver {
   @Mutation(() => IdeaEntity, { name: 'createIdea' })
   store(
     @Args('data') { title, description }: CreateIdea,
-    @User() { id }: UUID,
+    @Context('user') { id }: UUID,
   ) {
     return this.ideas.create({ title, description }, { id });
   }
   @UseGuards(new AuthGuard())
   @Mutation(() => IdeaEntity, { name: 'updateIdea' })
   update(
-    @User() { id }: UUID,
+    @Context('user') { id }: UUID,
     @Args('id') ideaId: string,
     @Args('data') { title, description }: CreateIdea,
   ) {
@@ -38,7 +37,7 @@ export class IdeaResolver {
   }
   @Mutation(() => IdeaEntity, { name: 'destroyIdea' })
   @UseGuards(new AuthGuard())
-  destroy(@Args('id') ideaId: string, @User() user: any) {
-    return this.ideas.destroy(ideaId, user);
+  destroy(@Args('id') ideaId: string, @Context('user') { id }: UUID) {
+    return this.ideas.destroy(ideaId, { id });
   }
 }

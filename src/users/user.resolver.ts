@@ -1,13 +1,13 @@
 import { UseGuards } from '@nestjs/common';
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation, Context } from '@nestjs/graphql';
 
 import { AuthGuard } from '../shared/auth.guard';
-import { User } from './user.decorator';
+
 import { UUID } from './uuid-validation';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 import { LoginUser } from './login-user.validation';
-
+import { Auth } from './auth.type';
 import { RegisterUser } from './register-user.validation';
 @Resolver(() => UserEntity)
 export class UserResolver {
@@ -18,7 +18,7 @@ export class UserResolver {
   ) {
     return this.users.get(page);
   }
-  @Mutation(() => UserEntity)
+  @Mutation(() => Auth)
   login(@Args('data') data: LoginUser) {
     return this.users.login(data);
   }
@@ -28,7 +28,7 @@ export class UserResolver {
   }
   @Query(() => UserEntity)
   @UseGuards(new AuthGuard())
-  me(@User() { id }: UUID) {
+  async me(@Context('user') { id }: UUID) {
     return this.users.me({ id });
   }
 }

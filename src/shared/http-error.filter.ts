@@ -6,13 +6,15 @@ import {
   Logger,
   HttpStatus,
 } from '@nestjs/common';
-
 @Catch()
 export class HttpErrorFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const request = ctx.getRequest();
     const response = ctx.getResponse();
+    if (!request) {
+      return;
+    }
     let status = exception.getStatus
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -33,13 +35,18 @@ export class HttpErrorFilter implements ExceptionFilter {
       message,
     };
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-      console.error(exception);
+      Logger.error(
+        `${request.method} ${request.url}`,
+        exception.stack,
+        'ExceptionFilter',
+      );
+    } else {
+      Logger.error(
+        `${request.method} ${request.url}`,
+        JSON.stringify(errorResponse),
+        'ExceptionFilter',
+      );
     }
-    Logger.error(
-      `${request.method} ${request.url}`,
-      JSON.stringify(errorResponse),
-      'ExceptionFilter',
-    );
     response.status(status).json(errorResponse);
   }
 }
